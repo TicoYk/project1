@@ -2,7 +2,9 @@ package com.springguru.project1.controllers;
 
 import java.util.Iterator;
 
+import com.springguru.project1.domain.Author;
 import com.springguru.project1.domain.Book;
+import com.springguru.project1.domain.Publisher;
 import com.springguru.project1.repositories.BookRepository;
 
 import org.springframework.stereotype.Controller;
@@ -22,9 +24,11 @@ public class BookController {
         model.addAttribute("books", bookRepository.findAll());
         Iterator<Book> books = bookRepository.findAll().iterator();
         Book book1;
+        Publisher pub;
         while(books.hasNext()){
             book1 = books.next();
-            System.out.println(book1.getTitle());
+            pub = book1.getPublisher();
+            System.out.println(pub.getName());
         }
         return "list";
     }
