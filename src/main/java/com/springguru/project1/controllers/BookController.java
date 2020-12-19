@@ -2,6 +2,7 @@ package com.springguru.project1.controllers;
 
 import java.util.Iterator;
 
+import com.springguru.project1.domain.Book;
 import com.springguru.project1.repositories.BookRepository;
 
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,11 @@ public class BookController {
     public String getBooks(Model model){
 
         model.addAttribute("books", bookRepository.findAll());
-        Iterator books = bookRepository.findAll().iterator();
+        Iterator<Book> books = bookRepository.findAll().iterator();
+        Book book1;
         while(books.hasNext()){
-            System.out.println(books.next());
+            book1 = books.next();
+            System.out.println(book1.getTitle());
         }
         return "list";
     }
